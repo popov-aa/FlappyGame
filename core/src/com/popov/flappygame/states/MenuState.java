@@ -20,7 +20,7 @@ public class MenuState extends State {
 
     @Override
     protected void handleInput() {
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.justTouched()) {
             flappyGame.getGameStateManager().set(new PlayState(flappyGame));
         }
     }

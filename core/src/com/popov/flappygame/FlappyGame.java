@@ -13,18 +13,25 @@ import lombok.Getter;
 public class FlappyGame extends ApplicationAdapter {
 
 	@Getter
-	public final int screenWidth = 480;
+	private int screenWidth;
 	@Getter
-	public final int screenHeight = 800;
+	private int screenHeight;
+	@Getter
+	private float factorX;
+	@Getter
+	private float factorY;
+
 	@Getter
 	public final String title = "Flappy Game";
-
+	@Getter
 	private GameStateManager gameStateManager = new GameStateManager();
 
 	private SpriteBatch batch;
 
 	@Override
 	public void create () {
+		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
 		batch = new SpriteBatch();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gameStateManager.push(new MenuState(this));
@@ -42,4 +49,13 @@ public class FlappyGame extends ApplicationAdapter {
 		batch.dispose();
 
 	}
+
+	@Override
+	public void resize (int width, int height) {
+		screenWidth = Gdx.graphics.getWidth();
+		factorX = screenWidth / 1080f;
+		screenHeight = Gdx.graphics.getHeight();
+		factorY = screenHeight / 1920f;
+	}
+
 }

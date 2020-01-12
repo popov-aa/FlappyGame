@@ -8,7 +8,7 @@ import com.popov.flappygame.FlappyGame;
 
 public abstract class State implements Disposable {
 
-    protected final OrthographicCamera orthographicCamera = new OrthographicCamera();
+    protected final OrthographicCamera camera = new OrthographicCamera();
     protected final Vector3 mouse = new Vector3();
     protected final FlappyGame flappyGame;
 
@@ -19,4 +19,5 @@ public abstract class State implements Disposable {
     protected abstract void handleInput();
     public abstract void update(float delta);
     public abstract void render(SpriteBatch spriteBatch);
+    public abstract void resize(int x, int y);
 }

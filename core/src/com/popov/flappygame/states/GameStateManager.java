@@ -27,4 +27,10 @@ public class GameStateManager {
     public void render(SpriteBatch spriteBatch) {
         states.peek().render(spriteBatch);
     }
+
+    public void resize(int x, int y) {
+        if (!states.empty()) {
+            states.peek().resize(x, y);
+        }
+    }
 }

@@ -17,6 +17,10 @@ public class FlappyGame extends ApplicationAdapter {
 	@Getter
 	private int screenHeight;
 	@Getter
+	private int originalScreenWidth = 1080;
+	@Getter
+	private int originalScreenHeight = 1920;
+	@Getter
 	private float factorX;
 	@Getter
 	private float factorY;
@@ -53,9 +57,10 @@ public class FlappyGame extends ApplicationAdapter {
 	@Override
 	public void resize (int width, int height) {
 		screenWidth = Gdx.graphics.getWidth();
-		factorX = screenWidth / 1080f;
+		factorX = screenWidth / (float)originalScreenWidth;
 		screenHeight = Gdx.graphics.getHeight();
-		factorY = screenHeight / 1920f;
+		factorY = screenHeight / (float)originalScreenHeight;
+		getGameStateManager().resize(width, height);
 	}
 
 }

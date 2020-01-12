@@ -7,6 +7,7 @@ import lombok.Getter;
 
 public class Bird {
     private final static int GRAVITY = -15;
+    private final static int MOVEMENT = 100;
     @Getter
     private final Vector3 position = new Vector3();
     private final Vector3 velocity = new Vector3();
@@ -19,9 +20,9 @@ public class Bird {
 
     public void update(float diff) {
         if (position.y > 0) {
-            velocity.add(0, GRAVITY, 0);
+//            velocity.add(0, GRAVITY, 0);
             velocity.scl(diff);
-            position.add(0, velocity.y, 0);
+            position.add(MOVEMENT*diff, velocity.y, 0);
             velocity.scl(1 / diff);
 
             if (position.y < 0) {

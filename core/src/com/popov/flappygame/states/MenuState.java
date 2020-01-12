@@ -12,10 +12,7 @@ public class MenuState extends State {
 
     public MenuState(FlappyGame flappyGame) {
         super(flappyGame);
-        orthographicCamera.setToOrtho(
-                false,
-                flappyGame.getScreenWidth(),
-                flappyGame.getScreenHeight());
+        resize(flappyGame.getScreenWidth(), flappyGame.getScreenHeight());
     }
 
     @Override
@@ -32,11 +29,11 @@ public class MenuState extends State {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        orthographicCamera.setToOrtho(
+        camera.setToOrtho(
                 false,
                 flappyGame.getScreenWidth(),
                 flappyGame.getScreenHeight());
-        spriteBatch.setProjectionMatrix(orthographicCamera.combined);
+        spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
         spriteBatch.draw(
                 backgroundTexture,
@@ -49,6 +46,11 @@ public class MenuState extends State {
                 playButtonTexture.getWidth() * flappyGame.getFactorX(),
                 playButtonTexture.getHeight() * flappyGame.getFactorY());
         spriteBatch.end();
+    }
+
+    @Override
+    public void resize(int x, int y) {
+        camera.setToOrtho(false, x, y);
     }
 
     @Override

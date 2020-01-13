@@ -11,7 +11,7 @@ import com.popov.flappygame.sprites.Tube;
 public class PlayState extends State {
 
     private final int birdOffset = 10;
-    private final int tubeSpacing = 256;
+    private final int tubeSpacing = 512;
     private final int tubeCount;
     private Texture backgroundTexture = new Texture("background.png");
     private Bird bird = new Bird(30, 500);
@@ -47,6 +47,9 @@ public class PlayState extends State {
 
             ) {
                 tube.reposition((int) (tube.getPosTopTube().x + (tube.getTopTubeTexture().getWidth() + tubeSpacing)*tubeCount));
+            }
+            if (tube.collides(bird.getRectangle())) {
+                flappyGame.getGameStateManager().set(new PlayState(flappyGame));
             }
         }
         camera.update();

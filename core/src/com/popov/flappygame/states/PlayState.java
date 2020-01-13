@@ -78,11 +78,12 @@ public class PlayState extends State {
                 0,
                 flappyGame.getScreenWidth(), flappyGame.getScreenHeight());
         spriteBatch.draw(
-                bird.getBirdTexture(),
+                bird.getTextureRegion(),
                 bird.getPosition().x * flappyGame.getFactorX(),
                 bird.getPosition().y * flappyGame.getFactorY(),
-                bird.getBirdTexture().getWidth() * flappyGame.getFactorX(),
-                bird.getBirdTexture().getHeight() * flappyGame.getFactorY());
+                bird.getTextureRegion().getRegionWidth(),// * flappyGame.getFactorX(),
+                bird.getTextureRegion().getRegionHeight()// * flappyGame.getFactorY()
+        );
         for (Tube tube: tubes) {
             spriteBatch.draw(
                     tube.getTopTubeTexture(),

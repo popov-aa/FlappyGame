@@ -7,8 +7,8 @@ import com.badlogic.gdx.math.Vector3;
 import lombok.Getter;
 
 public class Bird {
-    private final static int GRAVITY = -15;
-    private final static int MOVEMENT = 100;
+    private final static int GRAVITY = -40;
+    private final static int MOVEMENT = 500;
     @Getter
     private final Vector3 position = new Vector3();
     private final Vector3 velocity = new Vector3();
@@ -36,6 +36,6 @@ public class Bird {
     }
 
     public void jump() {
-        velocity.add(0, 500, 0);
+        velocity.add(0, 1000, 0);
     }
 }
